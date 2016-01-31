@@ -73,4 +73,4 @@ Following are the transformations that were performed on the input dataset:
 
 ##Output Data Set
 
-The output data Tidy.txt is a a space-delimited value file. The header line contains the names of the variables. It contains the mean and standard deviation values of the data contained in the input files. The header is restructued in an understandable manner. 
+The output data Tidy.txt is a a space-delimited value file. The header line contains the names of the variables. It contains the mean and standard deviation values of the data contained in the input files. The headers are relabeled appropriately for better understanding. 
