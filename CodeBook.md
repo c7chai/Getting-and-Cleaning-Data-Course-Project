@@ -1,10 +1,10 @@
 ##CodeBook
 
-This document describes the data and transofrmations used by run_analysis.R and the definition of variables in Tidy.txt.
+This file describes the data and transformations used in run_analysis.R script to clean up the data and the definition of variables can be found in Tidy.txt.
 
 ##Dataset Used
 
-This data is obtained from "Human Activity Recognition Using Smartphones Data Set". The data linked are collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
+The data is obtained from "Human Activity Recognition Using Smartphones Data Set". The data linked are collected from the accelerometers from the Samsung Galaxy S smartphone. A full description is available at the site http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones.
 
 The data set used can be downloaded from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip.
 
