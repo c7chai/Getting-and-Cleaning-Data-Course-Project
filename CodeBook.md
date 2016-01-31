@@ -1,6 +1,6 @@
 ##CodeBook
 
-This file describes the data and transformations used in run_analysis.R script to clean up the data and the definition of variables can be found in Tidy.txt.
+This file describes the variables, data and transformations used in run_analysis.R script to clean up the data.
 
 ##Dataset Used
 
