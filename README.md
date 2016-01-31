@@ -42,6 +42,7 @@ The R code in run_analysis.R proceeds under the assumption that the zip file ava
 The libraries used in this operation are data.table and dplyr. We prefer data.table as it is efficient in handling large data as tables. dplyr is used to aggregate variables to create the tidy data.
 
 library(data.table)
+
 library(dplyr)
 
 ##Read Supporting Metadata
@@ -49,6 +50,7 @@ library(dplyr)
 The supporting metadata in this data are the name of the features and the name of the activities. They are loaded into variables featureNames and activityLabels.
 
 featureNames <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/features.txt")
+
 activityLabels <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/activity_labels.txt", header = FALSE)
 
 ##Format training and test data sets
