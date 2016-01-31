@@ -61,6 +61,7 @@ Both training and test data sets are split up into subject, activity and feature
 
 subjectTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/subject_train.txt", header = FALSE)
 activityTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/y_train.txt", header = FALSE)
+
 featuresTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/X_train.txt", header = FALSE)
 
 ##Read test data
