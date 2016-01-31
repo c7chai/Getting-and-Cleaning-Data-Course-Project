@@ -40,9 +40,9 @@ In this repository, you find:
 
 The R code in run_analysis.R proceeds under the assumption that the zip file available at https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip is downloaded and extracted in the R Home Directory.
 
-##Libraries Used
+##Required Libraries
 
-The libraries used in this operation are data.table and dplyr. We prefer data.table as it is efficient in handling large data as tables. dplyr is used to aggregate variables to create the tidy data.
+The libraries used in this operation are data.table and dplyr. data.table is efficient in handling large data as tables. dplyr is used to aggregate variables to create the tidy data.
 
 library(data.table)
 
@@ -78,7 +78,7 @@ featuresTest <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/test/X_
 
 ###Part 1 - Merge the training and the test sets to create one data set
 
-We can use combine the respective data in training and test data sets corresponding to subject, activity and features. The results are stored in subject, activity and features.
+The respective data in training and test data sets corresponding to subject, activity and features are concatenated. The results are stored in subject, activity and features.
 
 subject <- rbind(subjectTrain, subjectTest)
 
@@ -88,13 +88,13 @@ features <- rbind(featuresTrain, featuresTest)
 
 ##Naming the columns
 
-The columns in the features data set can be named from the metadata in featureNames
+The columns in the features data set are named from the metadata in featureNames
 
 colnames(features) <- t(featureNames[2])
 
 ##Merge the data
 
-The data in features,activity and subject are merged and the complete data is now stored in completeData.
+The data in features,activity and subject are merged and the complete data is stored in completeData.
 
 colnames(activity) <- "Activity"
 
@@ -118,7 +118,7 @@ extractedData <- completeData[,requiredColumns]
 
 ###Part 3 - Uses descriptive activity names to name the activities in the data set
 
-The activity field in extractedData is originally of numeric type. We need to change its type to character so that it can accept activity names. The activity names are taken from metadata activityLabels.
+The activity field in extractedData is numeric class. It is converted to character class so that it can accept activity names. The activity names are taken from metadata activityLabels.
 
 extractedData$Activity <- as.character(extractedData$Activity)
 
@@ -128,7 +128,7 @@ extractedData$Activity[extractedData$Activity == i] <- as.character(activityLabe
 
 }
 
-We need to factor the activity variable, once the activity names are updated.
+The activity variable is factored, once the activity names are updated.
 
 extractedData$Activity <- as.factor(extractedData$Activity)
 
@@ -180,10 +180,10 @@ extractedData$Subject <- as.factor(extractedData$Subject)
 
 extractedData <- data.table(extractedData)
 
-We create tidyData as a data set with average for each activity and subject. Then, we order the enties in tidyData and write it into data file Tidy.txt that contains the processed data.
+Create tidyData as a data set with average of each variable for each activity and each subject. The data set is written into data file Tidy.txt that contains the processed data.
 
 tidyData <- aggregate(. ~Subject + Activity, extractedData, mean)
 
 tidyData <- tidyData[order(tidyData$Subject,tidyData$Activity),]
 
-write.table(tidyData, file = "Tidy.txt", row.names = FALSE)
+write.table(tidyData, file = "D:/DSS/Getting Cleaning Data/UCI HAR Dataset/Tidy.txt", row.names = FALSE)
