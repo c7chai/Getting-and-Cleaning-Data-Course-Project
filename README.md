@@ -60,6 +60,7 @@ Both training and test data sets are split up into subject, activity and feature
 ##Read training data
 
 subjectTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/subject_train.txt", header = FALSE)
+
 activityTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/y_train.txt", header = FALSE)
 
 featuresTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/X_train.txt", header = FALSE)
@@ -67,6 +68,7 @@ featuresTrain <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/train/
 ##Read test data
 
 subjectTest <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/test/subject_test.txt", header = FALSE)
+
 activityTest <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/test/y_test.txt", header = FALSE)
 
 featuresTest <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/test/X_test.txt", header = FALSE)
@@ -76,7 +78,9 @@ featuresTest <- read.table("D:/DSS/Getting Cleaning Data/UCI HAR Dataset/test/X_
 We can use combine the respective data in training and test data sets corresponding to subject, activity and features. The results are stored in subject, activity and features.
 
 subject <- rbind(subjectTrain, subjectTest)
+
 activity <- rbind(activityTrain, activityTest)
+
 features <- rbind(featuresTrain, featuresTest)
 
 ##Naming the columns
@@ -90,7 +94,9 @@ colnames(features) <- t(featureNames[2])
 The data in features,activity and subject are merged and the complete data is now stored in completeData.
 
 colnames(activity) <- "Activity"
+
 colnames(subject) <- "Subject"
+
 completeData <- cbind(features,activity,subject)
 
 ###Part 2 - Extracts only the measurements on the mean and standard deviation for each measurement
