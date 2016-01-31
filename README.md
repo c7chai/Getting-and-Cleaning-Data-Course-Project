@@ -118,8 +118,11 @@ extractedData <- completeData[,requiredColumns]
 The activity field in extractedData is originally of numeric type. We need to change its type to character so that it can accept activity names. The activity names are taken from metadata activityLabels.
 
 extractedData$Activity <- as.character(extractedData$Activity)
+
 for (i in 1:6){
+
 extractedData$Activity[extractedData$Activity == i] <- as.character(activityLabels[i,2])
+
 }
 
 We need to factor the activity variable, once the activity names are updated.
@@ -143,16 +146,27 @@ The following acronyms are replaced with descriptive variable names
     Character t are be replaced with Time
 
 names(extractedData)<-gsub("Acc", "Accelerometer", names(extractedData))
+
 names(extractedData)<-gsub("Gyro", "Gyroscope", names(extractedData))
+
 names(extractedData)<-gsub("BodyBody", "Body", names(extractedData))
+
 names(extractedData)<-gsub("Mag", "Magnitude", names(extractedData))
+
 names(extractedData)<-gsub("^t", "Time", names(extractedData))
+
 names(extractedData)<-gsub("^f", "Frequency", names(extractedData))
+
 names(extractedData)<-gsub("tBody", "TimeBody", names(extractedData))
+
 names(extractedData)<-gsub("-mean()", "Mean", names(extractedData), ignore.case = TRUE)
+
 names(extractedData)<-gsub("-std()", "STD", names(extractedData), ignore.case = TRUE)
+
 names(extractedData)<-gsub("-freq()", "Frequency", names(extractedData), ignore.case = TRUE)
+
 names(extractedData)<-gsub("angle", "Angle", names(extractedData))
+
 names(extractedData)<-gsub("gravity", "Gravity", names(extractedData))
 
 ###Part 5 - From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject
@@ -160,10 +174,13 @@ names(extractedData)<-gsub("gravity", "Gravity", names(extractedData))
 Firstly, let us set Subject as a factor variable.
 
 extractedData$Subject <- as.factor(extractedData$Subject)
+
 extractedData <- data.table(extractedData)
 
 We create tidyData as a data set with average for each activity and subject. Then, we order the enties in tidyData and write it into data file Tidy.txt that contains the processed data.
 
 tidyData <- aggregate(. ~Subject + Activity, extractedData, mean)
+
 tidyData <- tidyData[order(tidyData$Subject,tidyData$Activity),]
+
 write.table(tidyData, file = "Tidy.txt", row.names = FALSE)
